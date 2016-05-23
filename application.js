@@ -198,9 +198,17 @@ $(document).ready(function(){
 
 	//reset all the fields if the user resets
 	$('.reset').on('click', function(){
-		playAgain(game);
+		// play again doesn't accept an argument
+		playAgain();
 		game = new Game(); // i tried doing this in line 155 as part of playAgain, but I realize now that even though "game" has been closed over here, declareing the "game" var in 155 sets a new var in the global scope. It doesn't actually change this instance of game. I think anyway...
 		//debugger;
+		// this successfully re-assigns the game to a new instance of Game.
+		
+		// your comments nad intuition on line 155 are correct.  Since your event handler functions are wrapped in
+		// a document.ready callback, all of the "global" variables are contained to the scoped of the callback function.
+		
+		
+		
 	});
 });
 
